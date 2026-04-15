@@ -1,7 +1,7 @@
 const Database = require("better-sqlite3");
 const path = require("path");
 
-function resolveDbFile() {
+function resolvePreferredDbFile() {
   if (process.env.SQLITE_PATH) {
     return path.resolve(process.env.SQLITE_PATH);
   }
@@ -14,9 +14,17 @@ function resolveDbFile() {
   return path.resolve(__dirname, "data.sqlite");
 }
 
-const dbFile = resolveDbFile();
+function openDatabase() {
+  const preferred = resolvePreferredDbFile();
+  try {
+    return new Database(preferred);
+  } catch {
+    // Final safety net for serverless/read-only runtimes.
+    return new Database("/tmp/data.sqlite");
+  }
+}
 
-const db = new Database(dbFile);
+const db = openDatabase();
 
 db.pragma("journal_mode = WAL");
 
