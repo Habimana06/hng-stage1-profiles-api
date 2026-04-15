@@ -1,7 +1,7 @@
 {
-  "name": "hng-stage0-api",
+  "name": "hng-stage1-profiles-api",
   "version": "1.0.0",
-  "description": "HNG Stage 0 API integration task",
+  "description": "HNG Backend Wizards Stage 1 - Data Persistence & API Design Assessment",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -11,6 +11,9 @@
     "node": ">=18"
   },
   "dependencies": {
-    "express": "^4.21.2"
+    "better-sqlite3": "^12.4.1",
+    "express": "^4.21.2",
+    "uuidv7": "^1.0.2"
   }
 }
+
