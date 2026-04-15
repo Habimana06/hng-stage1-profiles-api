@@ -149,3 +149,9 @@ Optional env var:
 
 - `SQLITE_PATH`: override the SQLite file location
 
+### Vercel note
+
+On Vercel, this project automatically uses `/tmp/data.sqlite` because the
+deployment filesystem is read-only. `/tmp` is ephemeral, so data may reset
+between cold starts/redeploys.
+

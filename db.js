@@ -1,9 +1,20 @@
 const Database = require("better-sqlite3");
 const path = require("path");
 
-const dbFile = process.env.SQLITE_PATH
-  ? path.resolve(process.env.SQLITE_PATH)
-  : path.resolve(__dirname, "data.sqlite");
+function resolveDbFile() {
+  if (process.env.SQLITE_PATH) {
+    return path.resolve(process.env.SQLITE_PATH);
+  }
+
+  // Vercel runtime is read-only except /tmp.
+  if (process.env.VERCEL) {
+    return "/tmp/data.sqlite";
+  }
+
+  return path.resolve(__dirname, "data.sqlite");
+}
+
+const dbFile = resolveDbFile();
 
 const db = new Database(dbFile);
 
