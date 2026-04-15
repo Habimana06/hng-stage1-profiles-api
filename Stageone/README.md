@@ -1,5 +1,9 @@
 # HNG Backend Wizards — Stage 1
 
+## Repository
+
+`https://github.com/Habimana06/hng-stage1-profiles-api`
+
 ## Base URL
 
 After deployment, your base URL will look like `https://your-app.domain`.
