@@ -231,5 +231,5 @@ app.delete("/api/profiles/:id", (req, res) => {
   return res.status(204).send();
 });
 
-module.exports = { app };
+module.exports = app;
 
